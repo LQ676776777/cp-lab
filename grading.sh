@@ -24,7 +24,7 @@ else
 #生成最终的可执行程序文件
 gcc -o pl0 lex.yy.c         
 #执行最终生成的程序
-./pl0 test_cases/case_$typ.pl0 > tokens.txt    
+./pl0 test_cases/case_$typ.pas > tokens.txt    
 
 #显示程序运行结果
 cat tokens.txt											

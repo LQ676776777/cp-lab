@@ -1,7 +1,7 @@
  all: pl
 
-lex.yy.c: pl_test.l
-	flex pl_test.l
+lex.yy.c: pl0.l
+	flex pl0.l
 
 pl: lex.yy.c
 	gcc -o pl lex.yy.c

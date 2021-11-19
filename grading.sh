@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #make clean（清除上一次的评测程序）
-rm pl0.l lex.yy.c > /dev/null 2>&1  
+rm lex.yy.c > /dev/null 2>&1  
 
 #新建文本，准备存放程序输出结果
 touch tokens.txt

@@ -1,8 +1,7 @@
-a+b a+ b
-a +b
-a + b
-c10-d34d cd170d193- d7
-c -d cd5c - d56c
-e*f e* f e *f e * f
-g:=h g :=h g:= h g := h
-3/7 5 /2 182 / 983 34/ 173
+#include <iostream>
+
+int main()
+{
+    std::cout << "Hello World!" << std::endl;
+	return 0;
+}

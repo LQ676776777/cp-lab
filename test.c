@@ -1,0 +1,4 @@
+ int main() { 
+   int a = getint(); 
+   putint(a * a); 
+ }

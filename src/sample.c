@@ -1,3 +1,4 @@
+#include <stdio.h>
 #ifdef NEG
 #define M -4
 #else
@@ -6,9 +7,10 @@
 int main()
 {
     int a = M;
-    if (a > 0)
+    if (a)
         a = a + 4;
     else
         a = a * 4;
+    printf("Hello, world!\na=%d\n", a);
     return 0;
 }

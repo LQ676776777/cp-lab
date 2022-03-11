@@ -7,13 +7,13 @@
  
 int main(void)
 {
-   int y = 14;
+  
    printf( "Hello, I am your instuctor, please introduce yourself.\n");
  
    #ifdef BILIBILI
-   printf("My name is Bilibi, I am %d  years old!\n");
+   printf("My name is Bilibi, 先生お久しぶりです!\n");
    #endif
  
-   qq();
+   alibaba();
    return 0;
 }

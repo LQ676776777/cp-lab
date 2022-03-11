@@ -12,7 +12,7 @@ touch error.txt
 #读取键盘输入到typ中         
 read -p '' typ	
 	         
-flex pl0.l > error.txt 2>&1	         
+flex lex/pl0.l > error.txt 2>&1	         
 #用flex编译源文件，保存错误信息
 
 #检查是否成功生成
@@ -22,7 +22,7 @@ echo "下面是错误信息："
 cat error.txt
 else
 #生成最终的可执行程序文件
-gcc -o pl0 lex.yy.c         
+gcc -o lex/pl0 lex.yy.c         
 #执行最终生成的程序
 ./pl0 test_cases/case_$typ.pas > tokens.txt    
 

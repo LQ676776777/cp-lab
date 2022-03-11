@@ -1,3 +1,4 @@
+{计算m和n的最大公约数并输出}
 var m, n, r, q;
 procedure gcd;
     begin

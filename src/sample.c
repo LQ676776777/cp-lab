@@ -7,7 +7,7 @@
 int main()
 {
     int a = M;
-    if (a)
+    if (a > 0)
         a = a + 4;
     else
         a = a * 4;

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <qq.h>
+#include <alibaba.h>
  
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -7,12 +7,11 @@
  
 int main(void)
 {
-   int a = 23;
+   int y = 14;
+   printf( "Hello, I am your instuctor, please introduce yourself.\n");
  
-   printf( "Hello, I am teacher(%d), pls tell me your names!\n", a );
- 
-   #ifdef POPO
-   printf("My name is PoPo!\n");
+   #ifdef BILIBILI
+   printf("My name is Bilibi, I am %d  years old!\n");
    #endif
  
    qq();

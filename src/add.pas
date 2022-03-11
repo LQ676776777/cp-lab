@@ -1,3 +1,4 @@
+{计算a和b的和并输出}
 var
    a,b,c;
 begin

@@ -11,6 +11,6 @@ void alibaba(void)
    printf("My name is Alibaba, I am %d years old.\n", y);
  
    #ifdef BILIBILI
-   printf("Alibaba: Hey Bili, お久しぶり.\n");
+   printf("Alibaba: Hey Bili, 你娃最近赚钱没得？\n");
    #endif
 }

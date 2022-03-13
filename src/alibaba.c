@@ -7,7 +7,7 @@
  
 void alibaba(void)
 {
-   int y;
+   int y = 24;
    printf("My name is Alibaba, I am %d years old.\n", y);
  
    #ifdef BILIBILI

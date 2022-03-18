@@ -6,9 +6,9 @@ int  main(){
    int i = 10, j = 20;
    int k;
 
-    k = foo(i,j);
+   k = foo(i,j);
    putint(k);
    putch(13);
    putch(10);
-    return 0;
+   return 0;
 }

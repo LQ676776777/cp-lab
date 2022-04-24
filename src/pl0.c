@@ -28,7 +28,10 @@ int main(int argc,char* argv[])
     bool nxtlev[symnum];
 
     fin = fopen(argv[1],"r");
-	if (!fin) {
+    if ( argc <= 1) { printf("No source file given!\n"); }
+	else {
+        fname = argv[1];
+        (!fin) {
 		printf("Can't open file!\n");
 		return 1;
 	} else 	{

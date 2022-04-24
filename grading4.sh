@@ -4,4 +4,4 @@
  make
 
  read -p '' testcase	
- ./plc $testcase.pas < $testcase.in.txt
+ ./plc $testcase.pas < ../input/$testcase.in.txt

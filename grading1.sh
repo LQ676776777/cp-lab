@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd src
 chmod +x shell1.sh
 ./shell1.sh > err1.txt

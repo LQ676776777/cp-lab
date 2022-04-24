@@ -2,3 +2,4 @@
  
  cd src
  make
+ ./plc 

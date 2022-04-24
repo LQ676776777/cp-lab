@@ -29,10 +29,16 @@ int main(int argc,char* argv[])
 
     if ( argc <= 1) { 
        printf("No source file given!\n"); 
-       return 1
+       return 1;
     }
 	
-    fname = argv[1];
+    if (strlen(argv[1]) >= al) {
+        printf("File name is too long!\n ");
+        return 1;
+    }
+
+    strcpy(fname, argv[1]);
+    
     fin = fopen(fname, "r");
     if (!fin) {
 		printf("Can't open file!\n");

@@ -27,14 +27,17 @@ int main(int argc,char* argv[])
 {
     bool nxtlev[symnum];
 
-    fin = fopen(argv[1],"r");
-    if ( argc <= 1) { printf("No source file given!\n"); }
-	else {
-        fname = argv[1];
-        (!fin) {
+    if ( argc <= 1) { 
+       printf("No source file given!\n"); 
+       return 1
+    }
+	
+    fname = argv[1];
+    fin = fopen(fname, "r");
+    if (!fin) {
 		printf("Can't open file!\n");
 		return 1;
-	} else 	{
+	}  else 	{
 		//printf("List object code?(Y/N)");   /* 是否输出虚拟机代码 */
 		//scanf("%s", fname);
 		listswitch = false;  //(fname[0]=='y' || fname[0]=='Y');

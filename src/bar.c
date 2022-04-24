@@ -11,9 +11,8 @@ int bar(){
     }
 }
 
-void main() {
+int main() {
     int a = bar();      //这里可以直接换成 a=101
     putint(a);
-    putch(13);
     putch(10);
 }

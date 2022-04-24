@@ -1,10 +1,12 @@
 extern void putfloat(float a);
 extern float getfloat();
+extern int getint();
 extern void putch(int a);
 
 int main(){
-    float a, b;
-    a = 020e-04f;
+    int a;
+    float b;
+    a = getint();
     b = getfloat();
     putfloat(a + b);
     putch(10);

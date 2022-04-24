@@ -8,10 +8,10 @@
 int main(void)
 {
   
-   printf( "Hello, I am your instuctor, please introduce yourself.\n");
+   printf( "Instructor: Hello, I am your instuctor, please introduce yourself.\n");
  
    #ifdef BILIBILI
-   printf("My name is Bili, 先生お久しぶりです!\n");
+   printf("Bilibili: My name is Bili, 先生お久しぶりです!\n");
    #endif
  
    alibaba();

@@ -5,6 +5,6 @@ if [ $(cat shell3.sh  | grep -c "arm-linux-gnueabihf-gcc") -eq 0 ]; then
 echo 'arm-linux-gnueabihf-gcc not used!' 
 elif  $(cat sehell3.sh  | grep -c "qemu-arm") -eq 0 ]; then 
 echo 'qemu-arm not used' 
-elif 
+else
     ./shell3.sh
 fi

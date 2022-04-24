@@ -2,4 +2,6 @@
  
  cd src
  make
- ./plc 
+
+ read -p '' testcase	
+ ./plc $testcase.pas < $testcase.in.txt

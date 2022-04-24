@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd src
 chmod +x shell2.sh
 ./shell2.sh > /dev/null 2>&1 

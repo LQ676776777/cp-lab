@@ -15,9 +15,10 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 
 #include "pl0.h"
-#include "string.h"
+
 
 /* 解释执行时使用的栈 */
 #define stacksize 500
@@ -38,7 +39,7 @@ int main(int argc,char* argv[])
     }
 
     strcpy(fname, argv[1]);
-    
+
     fin = fopen(fname, "r");
     if (!fin) {
 		printf("Can't open file!\n");

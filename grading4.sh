@@ -4,7 +4,7 @@ cd src/step4
 if [ -f "helloworld" ]; then
   rm *.o helloworld
 fi
-make helloworld
+make helloworld 2>&1 >/dev/null
 if [ $? == 0 ]; then
   if [ ! -f "helloworld" ]; then	         
     echo "The executable 'helloworld' is not found. Please make sure that you have written Makefile as required!"

@@ -1,7 +1,20 @@
- #!/bin/bash
- 
- cd src
- make
+#!/bin/bash
 
- read -p '' testcase	
- ./plc $testcase.pas < ../input/$testcase.in.txt
+cd src/step4
+if [ -f "helloworld" ]; then
+  rm *.o helloworld
+fi
+make helloworld
+if [ $? == 0 ]; then
+  if [ ! -f "helloworld" ]; then	         
+    echo "The executable 'helloworld' is not found. Please make sure that you have written Makefile as required!"
+  else
+    if diff <(./helloworld) <(printf '%s\n' "Hello world!"); then
+      echo "passed!"
+    else
+      echo "The executable generated is not as expected."
+    fi
+  fi
+else 
+  echo "An error occurred during the building process."
+fi

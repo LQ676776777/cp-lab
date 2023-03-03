@@ -2,7 +2,7 @@
 
 cd src/step4
 if [ -f "helloworld" ]; then
-  if  [-f "*.o"]; then
+  if  [ -f "*.o" ]; then
      rm *.o helloworld 2>&1 >/dev/null
   fi   
 fi

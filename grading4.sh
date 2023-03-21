@@ -2,7 +2,7 @@
 
 cd src/step4
 if [ -f "helloworld" ]; then
-     rm *.o helloworld 2>&1 >/dev/null
+     rm helloworld 2>&1 >/dev/null
 fi
 make helloworld 2>&1 >/dev/null
 if [ $? == 0 ]; then

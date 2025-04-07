@@ -1,10 +1,12 @@
 #!/bin/bash
 
 cd src/step4
+touch err.txt
 if [ -f "helloworld" ]; then
     rm helloworld 2>&1 >/dev/null
 fi
-make helloworld 2>&1 >/dev/null
+make helloworld > err.txt
+# 2>&1 >/dev/null
 if [ $? == 0 ]; then
   if [ ! -f "helloworld" ]; then	         
     echo "The executable 'helloworld' is not found. Please make sure that you have written Makefile as required!"

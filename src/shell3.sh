@@ -6,3 +6,6 @@
 
 # 用qemu-arm运行iplusf.arm
 
+arm-linux-gnueabihf-gcc -S iplusf.c -o iplusf.arm.s
+arm-linux-gnueabihf-gcc iplusf.arm.s sylib.a -o iplusf.arm
+qemu-arm -L /usr/arm-linux-gnueabihf/ iplusf.arm

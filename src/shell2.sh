@@ -4,4 +4,4 @@
 # 并支持arm硬浮点的汇编代码（程序中并没有浮点数）。汇编代码文件名为bar.clang.arm.s
 # 请使用恰当的编译选项以完成上述任务：
 
-
+clang -S -O2 --target=armv7-linux-gnueabihf -mfloat-abi=hard -Wno-error=implicit-function-declaration bar.c -o bar.clang.arm.s

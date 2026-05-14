@@ -1,0 +1,18 @@
+int test(int a, int b) {
+    int i = 0;
+    while (i <= 10) {
+        i = i + 1;
+
+    }
+    if ( i == 11 ) {
+        break;
+    }
+    return 1;
+}
+int main() {
+    int c = test(1,1);
+    continue;
+    return 0;
+}
+// Continue not in loop break语句不在循环中
+

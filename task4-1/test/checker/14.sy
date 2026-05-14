@@ -1,0 +1,18 @@
+int main(){
+    int i = 1;
+    while (i < 9) {
+        int j = 1;
+        while (j < 0) {
+           int a = i * j * b;
+           c = a;
+           j = j + 1;
+           if (j == 5) break; 
+        }
+        d = j;
+        if (i == 5) break;
+        i = i + 1;
+    }    
+    //i = e * 5;
+   
+    return 0;
+}

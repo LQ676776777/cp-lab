@@ -1,0 +1,11 @@
+float test(int a, int b) {
+    if (a+b==1){
+        return a+b;
+    }
+    return 0.1;
+}
+int main() {
+    float c = test(1,1);
+    return 0;
+}
+// Func Return Type Not Match 返回类型不匹配

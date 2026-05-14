@@ -1,0 +1,17 @@
+int gcd(int a, int b) {
+	if (a == b){ return a; 	}
+	else if (a > b) { return gcd(a - b, b); }
+		else return gcd(b - a, a);
+}
+void gcd(int a) {
+    return ;
+}
+int main(){
+    int a,b;
+    a = getint();
+    b = getint();
+    putint(gcd(a,b));
+    putch(LF);
+    return 0;
+}
+// Redefined Function 函数重复定义

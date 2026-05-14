@@ -204,10 +204,11 @@ antlrcpp::Any AstVisitor::visitIfElse(SysyParser::IfElseContext *const ctx) {
 
 // ***************  TODO:　你需要完成该方法  ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 antlrcpp::Any AstVisitor::visitWhile(SysyParser::WhileContext *const ctx) {
-
-
-
-    auto const ret = new While(nullptr, nullptr); // 请在补充代码的同时，正确填写两个形参
+    auto const cond_ = ctx->cond()->accept(this).as<Expression *>();
+    std::unique_ptr<Expression> cond(cond_);
+    auto const body_ = ctx->stmt()->accept(this).as<Statement *>();
+    std::unique_ptr<Statement> body(body_);
+    auto const ret = new While(std::move(cond), std::move(body));
     return static_cast<Statement *>(ret);
 }
 

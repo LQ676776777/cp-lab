@@ -1,0 +1,8 @@
+int main(){
+    int a = 0,b = 0;
+    a = test();
+    b = getint();
+    test(a,b);
+    return 0;
+}
+// Use Undefined Function 使用未定义函数

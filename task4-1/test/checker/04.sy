@@ -1,0 +1,9 @@
+int main(){
+    int b;
+    a = getint();
+    b = getint();
+    putint(gcd(a,b));
+    putch(LF);
+    return 0;
+}
+// Use Undefined Variable 使用未定义变量

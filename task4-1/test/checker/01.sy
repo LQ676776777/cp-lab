@@ -1,0 +1,12 @@
+float LF = 1;
+const int LF = 10;
+
+int main(){
+    int a,b;
+    a = getint();
+    b = getint();
+    putint(gcd(a,b));
+    putch(LF);
+    return 0;
+}
+// Redefined Variable 重复定义变量/重复声明

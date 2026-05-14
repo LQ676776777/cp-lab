@@ -1,0 +1,14 @@
+int gcd(int a, int b) {
+    return 1;
+}
+int main(){
+    int a,b;
+    a = getint();
+    b = getint();
+    gcd(gcd(),gcd());
+    putint(gcd(a));
+    putch(LF);
+    return 0;
+}
+// Redefined Function 函数重复定义
+// 不要出现这样的形式putint(gcd(a))，putint是系统自带函数没有处理？（因为没有进行处理

@@ -128,9 +128,8 @@ void Checker::visit(ReturnStmtAST &ast) {
   auto entry = find_func();
   // TODO 函数返回类型不匹配
   if (entry->type != this->current_type.type) {
-
-
-
+    err.error(ErrorType::FuncReturnTypeNotMatch, "");
+    exit(int(ErrorType::FuncReturnTypeNotMatch));
   }
 }
 
@@ -146,10 +145,8 @@ void Checker::visit(FuncDefAST &ast) {
   // 将函数插入符号表
   // TODO 函数重复定义
   if (!InsertFunc(ast)) {
-
-
-
-
+    err.error(ErrorType::FuncDuplicated, *ast.id);
+    exit(int(ErrorType::FuncDuplicated));
   }
   start_of_new_func = true;
   ast.block->accept(*this);
@@ -173,7 +170,7 @@ void Checker::visit(BlockAST &ast) {
 
   // TODO: blockItemList继承BlockAST的is_inloop
   for (auto &item : ast.blockItemList) {
-
+    item->is_inloop = ast.is_inloop;
     item->accept(*this);
   }
 
@@ -189,9 +186,9 @@ void Checker::visit(BlockAST &ast) {
  */
 void Checker::visit(BlockItemAST &ast) {
 
-  // TODO: blockItemList继承BlockAST的is_inloop    
+  // TODO: blockItemList继承BlockAST的is_inloop
   if (ast.stmt) {
- 
+    ast.stmt->is_inloop = ast.is_inloop;
     ast.stmt->accept(*this);
   }
   if (ast.decl) {
@@ -210,23 +207,23 @@ void Checker::visit(StmtAST &ast) {
 
   if (ast.selectStmt) {
     // TODO: selectStmt继承ast的is_inloop属性
-
+    ast.selectStmt->is_inloop = ast.is_inloop;
     ast.selectStmt->accept(*this);
   }
   if (ast.block) {
     // TODO：block继承ast的is_inloop属性
-
+    ast.block->is_inloop = ast.is_inloop;
     ast.block->accept(*this);
   }
   if (ast.iterationStmt) {
     // TODO: iterationStmt的is_inloop属性置为true
-
+    ast.iterationStmt->is_inloop = true;
     ast.iterationStmt->accept(*this);
   }
 
   if (ast.returnStmt) {
     ast.returnStmt->accept(*this);
-  }  
+  }
   if (ast.lVal) {
     ast.lVal->accept(*this);
   }
@@ -236,12 +233,16 @@ void Checker::visit(StmtAST &ast) {
 
   if (ast.sType == STYPE::BRE) { // 当前节点为Break语句类型
     // TODO 检查该break语句是否在循环体内,若不是应报错
-  
-  
-  
+    if (!ast.is_inloop) {
+      err.error(ErrorType::BreakNotInLoop, "");
+      exit(int(ErrorType::BreakNotInLoop));
+    }
   } else if (ast.sType == STYPE::CONT) { // 当前节点为Continue语句类型
     // TODO 检查该continuek语句是否在循环体内,若不是应报错
- 
+    if (!ast.is_inloop) {
+      err.error(ErrorType::ContinueNotInLoop, "");
+      exit(int(ErrorType::ContinueNotInLoop));
+    }
   }
 }
 
@@ -255,11 +256,11 @@ void Checker::visit(StmtAST &ast) {
 void Checker::visit(SelectStmtAST &ast) {
   // TODO: if分支和else分支都要继承ast的is_inloop属性
   if (ast.elseStmt) {
-
+    ast.elseStmt->is_inloop = ast.is_inloop;
     ast.elseStmt->accept(*this);
   }
   if (ast.ifStmt) {
-    
+    ast.ifStmt->is_inloop = ast.is_inloop;
     ast.ifStmt->accept(*this);
   }
   if (ast.cond) {
@@ -276,12 +277,12 @@ void Checker::visit(SelectStmtAST &ast) {
 void Checker::visit(IterationStmtAST &ast) {
 
   // TODO： while语句的stmt之is_inloop属性置为true.
-  //this->in_loop = true; 
+  //this->in_loop = true;
   if (ast.cond) {
     ast.cond->accept(*this);
   }
   if (ast.stmt) {
-
+    ast.stmt->is_inloop = true;
     ast.stmt->accept(*this);
   }
   //this->in_loop = false; 废弃！
@@ -369,7 +370,10 @@ void Checker::visit(LValAST &ast) {
     // TODO ERROR
     // 左值数组下标不是整数
     // 例如c[0.1] = 1;
-
+    if (!Expr_int) {
+      err.error(ErrorType::ArrayIndexNotInt, *ast.id);
+      exit(int(ErrorType::ArrayIndexNotInt));
+    }
   }
 
   auto str = ast.id.get();
@@ -386,8 +390,8 @@ void Checker::visit(LValAST &ast) {
   // 对非数组变量采用下标变量的形式访问
   // 例如 int c; c[10][10] = 10;
   if (!entry->is_array && !ast.arrays.empty()) {
-
-
+    err.error(ErrorType::VisitVariableError, *ast.id);
+    exit(int(ErrorType::VisitVariableError));
   }
 
   this->current_type.type = entry->type;
@@ -425,24 +429,23 @@ void Checker::visit(CallAST &ast) {
   if (entry == nullptr) {
     // TODO ERROR
     // 函数未定义
- 
- 
+    err.error(ErrorType::FuncUnknown, *ast.id);
+    exit(int(ErrorType::FuncUnknown));
   } else {
     //参数长度不匹配
     if (entry->func_params.size() != ast.funcCParamList.size()) {
       // TODO ERROR
       // 函数参数/类型不匹配
- 
- 
-     } else {
+      err.error(ErrorType::FuncParamsNotMatch, *ast.id);
+      exit(int(ErrorType::FuncParamsNotMatch));
+    } else {
       //遍历实参与形参
       int i = 0;
       for (auto &exp : ast.funcCParamList) {
         exp->accept(*this);
         if (this->current_type.type != entry->func_params[i].type) {
-
-
-
+          err.error(ErrorType::FuncParamsNotMatch, *ast.id);
+          exit(int(ErrorType::FuncParamsNotMatch));
         } else {
           i++;
         }
